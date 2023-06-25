@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
 
 class ImageGallery extends Component {
     state = {
@@ -8,7 +9,7 @@ class ImageGallery extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.imagesName !== this.props.imagesName) {
-            this.setState({ loading: true })
+            this.setState({ loading: true, images: null })
 
             const API_KEY = '35871708-bbfa936b0bfd126629100243d';
 
@@ -20,23 +21,25 @@ class ImageGallery extends Component {
     }
 
     render() {
-        const { images } = this.state;
+        const { images, loading } = this.state;
 
         return (
             <div>
+                {loading && <p>Loading</p>}
+                {!images && <p>Fiell search for results</p>}
                 {images &&
                     <ul>
                         {this.state.images.hits.map(image => (
-                            <li key={image.id}>
-                                <img src={image.webformatURL} alt="" />
-                            </li>
+                            // <li key={image.id}>
+                            //     <img src={image.webformatURL} alt="" />
+                            // </li>
+                            <ImageGalleryItem image={image} />
                         ))}
-
                     </ul>
                 }
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default ImageGallery;
