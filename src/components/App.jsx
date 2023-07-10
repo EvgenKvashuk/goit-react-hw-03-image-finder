@@ -7,8 +7,6 @@ import Loader from "./Loader/Loader";
 import Modal from "./Modal/Modal";
 
 
-import axios from "axios";
-
 class App extends Component {
   state = {
     showModal: false,
@@ -38,7 +36,7 @@ class App extends Component {
   };
 
   render() {
-    const { showModal, images, loading } = this.state;
+    const { showModal, loading } = this.state;
 
     return (
       <>
