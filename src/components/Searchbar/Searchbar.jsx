@@ -4,6 +4,7 @@ import Notiflix from "notiflix";
 class SearchBar extends Component {
     state = {
         imageName: "",
+        page: 1
     };
 
     handleNameChange = evt => {
@@ -19,25 +20,29 @@ class SearchBar extends Component {
         };
 
         this.props.onSubmit(this.state.imageName);
-        this.setState({ imageName: "", });
+        this.setState({ imageName: "", page: 1});
     }
 
     render() {
         return (
-            <header>
-                <form onSubmit={this.handleSubmit}>
-                    <button type="submit" >
-                        <span >Search</span>
-                    </button>
+            <div>
+                <header className="searchbar">
+                    <form onSubmit={this.handleSubmit} className="form">
+                        <button type="submit" className="button">
+                            <span className="button-label">Search</span>
+                        </button>
 
-                    <input
-                        type="text"
-                        placeholder="Search images and photos"
-                        value={this.state.imageName}
-                        onChange={this.handleNameChange}
-                    />
-                </form>
-            </header>
+                        <input
+                            className="input"
+                            type="text"
+                            autoComplete="off"
+                            autoFocus
+                            placeholder="Search images and photos"
+                            onChange={this.handleNameChange}
+                        />
+                    </form>
+                </header>
+            </div>
         )
     };
 };

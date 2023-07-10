@@ -4,8 +4,8 @@ class Loader extends Component {
     render() {
         return (
             <div>
-               <h2>LOADING...</h2>
-            </div>
+
+            </div >
         )
     }
 };

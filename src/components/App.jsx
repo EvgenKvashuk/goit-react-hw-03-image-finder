@@ -14,6 +14,7 @@ class App extends Component {
     showModal: false,
     loading: false,
     imagesName: "",
+    page: 1,
   };
 
   handleFromFormName = imagesName => {
@@ -21,10 +22,19 @@ class App extends Component {
     this.setState({ imagesName });
   };
 
+  handlePage = page => {
+    this.setState({ page });
+  }
+
   toggleModal = () => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
+  };
+
+  handlerNextBtn = () => {
+    console.log('click');
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   render() {
@@ -32,12 +42,15 @@ class App extends Component {
 
     return (
       <>
-        <SearchBar onSubmit={this.handleFromFormName} />
+        <SearchBar 
+        onSubmit={this.handleFromFormName} 
+        onPage={this.handlePage}/>
         <ImageGallery
           onOpenImg={this.toggleModal}
           imagesName={this.state.imagesName}
+          onPage={this.state.page}
         />
-        <Button />
+        <Button onClick={this.handlerNextBtn} />
         {loading &&
           <Loader />}
         {showModal && <Modal onClose={this.toggleModal} />}

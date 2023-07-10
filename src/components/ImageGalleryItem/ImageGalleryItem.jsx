@@ -6,7 +6,11 @@ class ImageGalleryItem extends Component {
         const {id, webformatURL} = this.props.image;
 
         return (
-            <li key={id}>
+            <li key={id}
+            style={{
+               borderRadius: '2px',
+               
+            }}>
                 <img src={webformatURL} alt="" />
             </li>
         );
