@@ -9,26 +9,20 @@ import Modal from "./Modal/Modal";
 
 class App extends Component {
   state = {
-    showModal: false,
     loading: false,
     imagesName: "",
     page: 1,
+    btnIsVisible: false,
   };
 
   handleFromFormName = imagesName => {
     console.log(imagesName);
-    this.setState({ imagesName });
+    this.setState({ imagesName, btnIsVisible: true });
   };
 
   handlePage = page => {
     this.setState({ page });
   }
-
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
-  };
 
   handlerNextBtn = () => {
     console.log('click');
@@ -36,22 +30,23 @@ class App extends Component {
   };
 
   render() {
-    const { showModal, loading } = this.state;
+    const { loading, btnIsVisible, imagesName } = this.state;
 
     return (
       <>
-        <SearchBar 
-        onSubmit={this.handleFromFormName} 
-        onPage={this.handlePage}/>
+        <SearchBar
+          onSubmit={this.handleFromFormName}
+          onPage={this.handlePage} />
         <ImageGallery
           onOpenImg={this.toggleModal}
           imagesName={this.state.imagesName}
           onPage={this.state.page}
         />
-        <Button onClick={this.handlerNextBtn} />
+        {btnIsVisible &&
+          <Button onClick={this.handlerNextBtn} />}
         {loading &&
           <Loader />}
-        {showModal && <Modal onClose={this.toggleModal} />}
+        {/* {showModal && <Modal onClose={this.toggleModal} />} */}
       </>
     );
   }

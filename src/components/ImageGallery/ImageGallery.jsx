@@ -40,9 +40,6 @@ class ImageGallery extends Component {
 
                     >
                         {this.state.images.hits.map(image => (
-                            // <li key={image.id}>
-                            //     <img src={image.webformatURL} alt="" />
-                            // </li>
                             <ImageGalleryItem image={image} />
                         ))}
                     </ul>

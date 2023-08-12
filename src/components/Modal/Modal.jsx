@@ -27,12 +27,12 @@ export default class Modal extends Component {
     }
 
     render() {
+
         return createPortal(
             <div>
                 <div>
                     <div onClick={this.HandleBackdropClick}>
-                        <h2>Modal</h2>
-                        <img src="" alt="" />
+                        <img src={this.props.largeImageURL} alt="" />
                     </div>
                 </div>
             </div>
