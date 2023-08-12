@@ -3,7 +3,7 @@ import Modal from "components/Modal/Modal";;
 
 class ImageGalleryItem extends Component {
     state = {
-        showModal: true,
+        showModal: false,
     };
 
     toggleModal = () => {
