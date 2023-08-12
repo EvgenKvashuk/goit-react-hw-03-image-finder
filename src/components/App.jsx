@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   render() {
-    const { loading, btnIsVisible, imagesName } = this.state;
+    const { loading, btnIsVisible } = this.state;
 
     return (
       <>
