@@ -30,16 +30,15 @@ class SearchBar extends Component {
                 <header className={css.Searchbar}>
                     <form
                         className={css.SearchForm}
-                        onSubmit={this.handleSubmit} className="form">
+                        onSubmit={this.handleSubmit}>
                         <button
                             className={css.SearchFormButton}
-                            type="submit" className="button">
+                            type="submit">
                             <span className="button-label">Search</span>
                         </button>
 
                         <input
-                         className={css.SearchFormInput}
-                            className="input"
+                            className={css.SearchFormInput}
                             type="text"
                             autoComplete="off"
                             autoFocus
