@@ -30,7 +30,9 @@ class ImageGalleryItem extends Component {
                 <img
                     className={css.ImageGalleryItemImage}
                     src={webformatURL} alt="" />
-                {showModal && <Modal largeImageURL={largeImageURL} />}
+                {showModal && <Modal
+                    onClose={this.toggleModal}
+                    largeImageURL={largeImageURL} />}
             </li>
         );
     };

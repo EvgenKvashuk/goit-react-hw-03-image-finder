@@ -5,6 +5,21 @@ import css from "./Styles.module.css"
 const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
+    handleKeyDown = e => {
+        console.log(e.code)
+        if (e.code === "Escape") {
+            this.props.onClose()
+        }
+    }
+
+    handleBackdropClick = evt => {
+        console.log(evt.currentTarget)
+        console.log(evt.target)
+        if (evt.currentTarget !== evt.target) {
+            this.props.onClose()
+        }
+    
+    }
 
     componentDidMount() {
         window.addEventListener('keydown', this.handleKeyDown)
@@ -14,27 +29,17 @@ export default class Modal extends Component {
         window.removeEventListener('keydown', this.handleKeyDown)
     }
 
-    handleKeyDown = e => {
-        if (e.code === 'Escape') {
-            this.props.onClose();
-            console.log(e.code)
-        }
-    }
 
-    HandleBackdropClick = evt => {
-        if (evt.currentTarget === evt.target) {
-            this.props.onClose();
-        }
-    }
 
     render() {
 
         return createPortal(
             <div>
-                <div className={css.Overlay}>
+                <div
+                    onClick={this.handleBackdropClick}
+                    className={css.Overlay}>
                     <div
-                        className={css.Modal}
-                        onClick={this.HandleBackdropClick}>
+                        className={css.Modal}>
                         <img src={this.props.largeImageURL} alt="" />
                     </div>
                 </div>
