@@ -4,8 +4,7 @@ import SearchBar from "./Searchbar/Searchbar";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import Button from "./Button/Button";
 import Loader from "./Loader/Loader";
-
-
+import css from "./Styles.module.css"
 
 class App extends Component {
   state = {
@@ -33,11 +32,14 @@ class App extends Component {
     const { loading, btnIsVisible } = this.state;
 
     return (
-      <>
+      <div
+        className={css.App}
+        >
         <SearchBar
           onSubmit={this.handleFromFormName}
           onPage={this.handlePage} />
         <ImageGallery
+
           onOpenImg={this.toggleModal}
           imagesName={this.state.imagesName}
           onPage={this.state.page}
@@ -47,7 +49,7 @@ class App extends Component {
         {loading &&
           <Loader />}
         {/* {showModal && <Modal onClose={this.toggleModal} />} */}
-      </>
+      </div>
     );
   }
 };

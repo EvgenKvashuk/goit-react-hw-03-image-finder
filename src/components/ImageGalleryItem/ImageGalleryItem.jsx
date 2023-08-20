@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Modal from "components/Modal/Modal";;
+import Modal from "components/Modal/Modal";
+import css from "./Styles.module.css"
 
 class ImageGalleryItem extends Component {
     state = {
@@ -19,14 +20,17 @@ class ImageGalleryItem extends Component {
 
         return (
 
-            <li 
-            onClick={this.toggleModal}
-            key={id}
+            <li
+                className={css.ImageGalleryItem}
+                onClick={this.toggleModal}
+                key={id}
                 style={{
                     borderRadius: '2px',
                 }}>
-                <img src={webformatURL} alt="" />
-                {showModal && <Modal largeImageURL={largeImageURL}/>}
+                <img
+                    className={css.ImageGalleryItemImage}
+                    src={webformatURL} alt="" />
+                {showModal && <Modal largeImageURL={largeImageURL} />}
             </li>
         );
     };

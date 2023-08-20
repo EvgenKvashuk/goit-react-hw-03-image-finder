@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Notiflix from "notiflix";
+import css from "./Styles.module.css"
 
 class SearchBar extends Component {
     state = {
@@ -20,19 +21,24 @@ class SearchBar extends Component {
         };
 
         this.props.onSubmit(this.state.imageName);
-        this.setState({ imageName: "", page: 1});
+        this.setState({ imageName: "", page: 1 });
     }
 
     render() {
         return (
             <div>
-                <header className="searchbar">
-                    <form onSubmit={this.handleSubmit} className="form">
-                        <button type="submit" className="button">
+                <header className={css.Searchbar}>
+                    <form
+                        className={css.SearchForm}
+                        onSubmit={this.handleSubmit} className="form">
+                        <button
+                            className={css.SearchFormButton}
+                            type="submit" className="button">
                             <span className="button-label">Search</span>
                         </button>
 
                         <input
+                         className={css.SearchFormInput}
                             className="input"
                             type="text"
                             autoComplete="off"

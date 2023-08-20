@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
 import axios from "axios";
+import css from "./Styles.module.css"
 
 class ImageGallery extends Component {
     state = {
@@ -32,7 +33,7 @@ class ImageGallery extends Component {
         const { images, loading } = this.state;
 
         return (
-            <div>
+            <div className={css.ImageGallery}>
                 {loading && <p>Loading</p>}
                 {!images && <p>Fiell search for results</p>}
                 {images &&
